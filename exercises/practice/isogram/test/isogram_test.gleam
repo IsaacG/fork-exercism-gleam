@@ -1,62 +1,80 @@
+import exercism/should
 import exercism/test_runner
 import isogram
+
+// An isogram is a word or phrase without a repeating letter.
 
 pub fn main() {
   test_runner.main()
 }
 
 pub fn empty_string_test() {
-  let assert True = isogram.is_isogram(phrase: "")
+  isogram.is_isogram("")
+  |> should.equal(True)
 }
 
 pub fn isogram_with_only_lower_case_characters_test() {
-  let assert True = isogram.is_isogram(phrase: "isogram")
+  isogram.is_isogram("isogram")
+  |> should.equal(True)
 }
 
 pub fn word_with_one_duplicated_character_test() {
-  let assert False = isogram.is_isogram(phrase: "eleven")
+  isogram.is_isogram("eleven")
+  |> should.equal(False)
 }
 
 pub fn word_with_one_duplicated_character_from_the_end_of_the_alphabet_test() {
-  let assert False = isogram.is_isogram(phrase: "zzyzx")
+  isogram.is_isogram("zzyzx")
+  |> should.equal(False)
 }
 
 pub fn longest_reported_english_isogram_test() {
-  let assert True = isogram.is_isogram(phrase: "subdermatoglyphic")
+  isogram.is_isogram("subdermatoglyphic")
+  |> should.equal(True)
 }
 
 pub fn word_with_duplicated_character_in_mixed_case_test() {
-  let assert False = isogram.is_isogram(phrase: "Alphabet")
+  isogram.is_isogram("Alphabet")
+  |> should.equal(False)
 }
 
 pub fn word_with_duplicated_character_in_mixed_case_lowercase_first_test() {
-  let assert False = isogram.is_isogram(phrase: "alphAbet")
+  isogram.is_isogram("alphAbet")
+  |> should.equal(False)
 }
 
 pub fn hypothetical_isogrammic_word_with_hyphen_test() {
-  let assert True = isogram.is_isogram(phrase: "thumbscrew-japingly")
+  isogram.is_isogram("thumbscrew-japingly")
+  |> should.equal(True)
 }
 
 pub fn hypothetical_word_with_duplicated_character_following_hyphen_test() {
-  let assert False = isogram.is_isogram(phrase: "thumbscrew-jappingly")
+  isogram.is_isogram("thumbscrew-jappingly")
+  |> should.equal(False)
 }
 
 pub fn isogram_with_duplicated_hyphen_test() {
-  let assert True = isogram.is_isogram(phrase: "six-year-old")
+  isogram.is_isogram("six-year-old")
+  |> should.equal(True)
 }
 
 pub fn made_up_name_that_is_an_isogram_test() {
-  let assert True = isogram.is_isogram(phrase: "Emily Jung Schwartzkopf")
+  isogram.is_isogram("Emily Jung Schwartzkopf")
+  |> should.equal(True)
 }
 
 pub fn duplicated_character_in_the_middle_test() {
-  let assert False = isogram.is_isogram(phrase: "accentor")
+  isogram.is_isogram("accentor")
+  |> should.equal(False)
 }
 
 pub fn same_first_and_last_characters_test() {
-  let assert False = isogram.is_isogram(phrase: "angola")
+  isogram.is_isogram("angola")
+  |> should.equal(False)
 }
 
+// This test aims to catch buggy implementations that check for duplicate spaces or hyphens.
 pub fn word_with_duplicated_character_and_with_two_hyphens_test() {
-  let assert False = isogram.is_isogram(phrase: "up-to-date")
+  isogram.is_isogram("up-to-date")
+  |> should.equal(False)
 }
