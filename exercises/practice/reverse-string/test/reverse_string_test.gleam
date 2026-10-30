@@ -2,6 +2,8 @@ import exercism/should
 import exercism/test_runner
 import reverse_string
 
+// If property based testing tools are available, a good property to test is reversing a string twice: reverse(reverse(string)) == string
+
 pub fn main() {
   test_runner.main()
 }
@@ -34,4 +36,19 @@ pub fn a_palindrome_test() {
 pub fn an_even_sized_word_test() {
   reverse_string.reverse("drawer")
   |> should.equal("reward")
+}
+
+pub fn wide_characters_test() {
+  reverse_string.reverse("子猫")
+  |> should.equal("猫子")
+}
+
+pub fn grapheme_cluster_with_pre_combined_form_test() {
+  reverse_string.reverse("Würstchenstand")
+  |> should.equal("dnatsnehctsrüW")
+}
+
+pub fn grapheme_clusters_test() {
+  reverse_string.reverse("ผู้เขียนโปรแกรม")
+  |> should.equal("มรกแรปโนยขีเผู้")
 }
